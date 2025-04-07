@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        #listaBtn {
+            background: #007bff;
+            margin-top: 20px;
+        }
+
+        #listaBtn:hover {
+            background: #0056b3;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        ul li {
+            background: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <h1>Cadastro</h1>
+        <label for="novo">New</label>
+        <input type="text" name="novo" id="novo" placeholder="Digite seu nome" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <button id="listaBtn">Lista</button>
+
+    <ul id="listaCadastros"></ul>
+
+    <script>
+        let cadastros = [];
+        let form = document.querySelector('form');
+        let listaButton = document.getElementById('listaBtn');
+        let listaCadastros = document.getElementById('listaCadastros');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            let novoValor = document.getElementById('novo').value;
+            cadastros.push(novoValor);
+
+            form.reset();
+        });
+
+        listaButton.addEventListener('click', function () {
+            listaCadastros.innerHTML = ""; // Limpa a lista antes de exibir
+
+            for (let i = 0; i < cadastros.length; i++) {
+                let li = document.createElement("li");
+                li.textContent = cadastros[i];
+                listaCadastros.appendChild(li);
+            }
+        });
+    </script>
+</body>
+</html>
