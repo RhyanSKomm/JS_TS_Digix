@@ -1,0 +1,9 @@
+.catalogo {
+  padding: 20px;
+}
+
+.produtos {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
